@@ -23,9 +23,7 @@ Employee.prototype.calculating = function () {
 }
 
 
-// 1004		Development	
-// 			
-// 1006		Finance	
+
 let Ghazi_Samer = new Employee(1000, "Ghazi Samer", "Administration", "Senior", "./assets/emp imagge.jpg");
 let Lana_Ali = new Employee(1001, "Lana Ali", "Finance", "Senior");
 let Tamara_Ayoub = new Employee(1002, "Tamara Ayoub", "Marketing", "Senior");
@@ -35,11 +33,23 @@ let Rana_Saleh = new Employee(1005,"Rana Saleh","Development","Junior");
 let Hadi_Ahmad = new Employee(1006,"Hadi Ahmad","Finance","Mid-Senio");
 
 Employee.prototype.render = function () {
-    console.log(this.name);
+    console.log(this.full_name);
     document.write(`<h1> this is the name of Employee: ${this.full_name}
         the salary is: ${this.salary} </h1>`);
 
 }
+
+Employee.prototype.render = function(){
+    console.log(this.level);
+    document.write(`<H2> hi : ${this.full_name}<H2>`);
+}
 Ghazi_Samer.render();
+Lana_Ali.render();
+Tamara_Ayoub.render();
+Safi_Walid.render();
+Omar_Zaid.render();
+Rana_Saleh.render();
+Hadi_Ahmad.render();
 console.log(empArr);
 console.log(Ghazi_Samer.salary);
+
