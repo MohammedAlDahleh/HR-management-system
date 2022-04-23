@@ -1,9 +1,14 @@
 `use strict`
+let sectionEl = document.getElementById("cardSection");
+//console.log(sectionEl);
+
+let formEl = document.getElementById("formID");
+//console.log(formEl);
 
 let empArr = [];
 
 function Employee(id, full_name, department, level, image_URL, salary) {
-    this.id = id;
+    this.id = this.generateID();
     this.full_name = full_name;
     this.department = department;
     this.level = level;
@@ -21,35 +26,100 @@ Employee.prototype.calculating = function () {
         return Math.floor((Math.random() * (1000 - 500 + 1) + 500) * 7.5)
     }
 }
-
-
-
-let Ghazi_Samer = new Employee(1000, "Ghazi Samer", "Administration", "Senior", "./assets/emp imagge.jpg");
-let Lana_Ali = new Employee(1001, "Lana Ali", "Finance", "Senior");
-let Tamara_Ayoub = new Employee(1002, "Tamara Ayoub", "Marketing", "Senior");
-let Safi_Walid = new Employee(1003,"Safi","Walid","Administration","Mid-Senior");
-let Omar_Zaid = new Employee(1004,"Omar Zaid","Development","Senior");
-let Rana_Saleh = new Employee(1005,"Rana Saleh","Development","Junior");
-let Hadi_Ahmad = new Employee(1006,"Hadi Ahmad","Finance","Mid-Senio");
-
+Employee.prototype.generateID = function(){
+ return (Math.floor(Math.random() * 10000) + 10000).toString().substring(1);
+}
 Employee.prototype.render = function () {
-    console.log(this.full_name);
-    document.write(`<h1> this is the name of Employee: ${this.full_name}
-        the salary is: ${this.salary} </h1>`);
+    // console.log(this.full_name);
+    // document.write(`<h1> this is the name of Employee: ${this.full_name}
+    //     the salary is: ${this.salary} </h1>`);
 
-}
+    let imageEl = document.createElement('img');
+    imageEl.src= this.image_URL;
+    sectionEl.appendChild(imageEl);
+    imageEl.style.width = "70px";
+   
+ let full_name = document.createElement('h3');
+ full_name.textContent = this.full_name;
+ sectionEl.appendChild(full_name); 
 
-Employee.prototype.render = function(){
-    console.log(this.level);
-    document.write(`<H2> hi : ${this.full_name}<H2>`);
+ let id = document.createElement('h4');
+ id.textContent = this.id;
+ sectionEl.appendChild(id); 
+ 
+ let department = document.createElement('p');
+ department.textContent = this.department;
+ sectionEl.appendChild(department);
+ 
+ let level = document.createElement('p');
+ department.textContent = this.level;
+ sectionEl.appendChild(level);
+ 
+ let salary = document.createElement('p');
+ salary.textContent = this.salary;
+ sectionEl.appendChild(salary);
 }
-Ghazi_Samer.render();
-Lana_Ali.render();
-Tamara_Ayoub.render();
-Safi_Walid.render();
-Omar_Zaid.render();
-Rana_Saleh.render();
-Hadi_Ahmad.render();
+// Employee.prototype.render = function(){
+
+//     let full_name = document.createElement('h3');
+//     full_name.textContent = this.full_name;
+//     sectionEl.appendChild(full_name); 
+ 
+//  let department = document.createElement('p');
+//  department.textContent = this.department;
+//  sectionEl.appendChild(department);
+ 
+//  let level = document.createElement('p');
+//  department.textContent = this.level;
+//  sectionEl.appendChild(level);
+ 
+ 
+//  let imageEl = document.createElement('img');
+//  imageEl.src= this.image_URL;
+//  sectionEl.appendChild(imageEl);
+//  imageEl.style.width = "70px";
+ 
+//  }
+ 
+
+let Ghazi_Samer = new Employee(1000, "Ghazi Samer", "Administration", "Senior", "./assets/Emp Image.jpg");
+let Lana_Ali = new Employee(1001, "Lana Ali", "Finance", "Senior","./assets/Emp Image.jpg");
+let Tamara_Ayoub = new Employee(1002, "Tamara Ayoub", "Marketing", "Senior","./assets/Emp Image.jpg");
+let Safi_Walid = new Employee(1003,"Safi","Walid","Administration","Mid-Senior","./assets/Emp Image.jpg");
+let Omar_Zaid = new Employee(1004,"Omar Zaid","Development","Senior","./assets/Emp Image.jpg");
+let Rana_Saleh = new Employee(1005,"Rana Saleh","Development","Junior","./assets/Emp Image.jpg");
+let Hadi_Ahmad = new Employee(1006,"Hadi Ahmad","Finance","Mid-Senio","./assets/Emp Image.jpg");
+
+for (let i = 0; i < empArr.length; i++) {
+    empArr[i].render();
+}
 console.log(empArr);
-console.log(Ghazi_Samer.salary);
 
+
+
+
+
+
+formEl.addEventListener("submit", handleSubmit);
+
+function handleSubmit(event){
+    event.preventDefault();
+
+   console.log("Form event",event);
+
+  let id = event.target.id.value;
+  let fullName = event.target.fullName.value;
+  let department = event.target.department.selected;
+  let level = event.target.level.selected;
+  let image_URL = event.target.image.value;
+  let salary=event.target.salary.value;
+
+  let newEmp = new Employee(id,fullName,department,level,image_URL,salary);
+  newEmp.render();
+  console.log(newEmp);
+}
+
+
+// selectList.addEventListener("change", function(){
+//     console.log(selectList.options[selectList.selectedIndex].value);
+// });
