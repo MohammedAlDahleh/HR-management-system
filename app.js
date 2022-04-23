@@ -36,6 +36,7 @@ Employee.prototype.render = function () {
 
     let imageEl = document.createElement('img');
     imageEl.src= this.image_URL;
+    imageEl.alt ="profile pic";
     sectionEl.appendChild(imageEl);
     imageEl.style.width = "70px";
    
@@ -96,23 +97,18 @@ for (let i = 0; i < empArr.length; i++) {
 console.log(empArr);
 
 
-
-
-
-
 formEl.addEventListener("submit", handleSubmit);
 
 function handleSubmit(event){
     event.preventDefault();
 
    console.log("Form event",event);
-
-  let id = event.target.id.value;
-  let fullName = event.target.fullName.value;
-  let department = event.target.department.selected;
-  let level = event.target.level.selected;
   let image_URL = event.target.image.value;
-  let salary=event.target.salary.value;
+  let id = Employee.prototype.generateID();
+  let fullName = event.target.fullName.value;
+  let department = event.target.department.value;
+  let level = event.target.level.value;
+  let salary=Employee.prototype.calculating();
 
   let newEmp = new Employee(id,fullName,department,level,image_URL,salary);
   newEmp.render();

@@ -7,10 +7,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Home</title>
+ 
+    <style>
+        .all-browsers {
+          margin: 0;
+          padding: 5px;
+          background-color: lightgray;
+        }
+        
+        .all-browsers > h1, .browser {
+          margin: 10px;
+          padding: 5px;
+        }
+        
+        .browser {
+          background: white;
+        }
+        
+        .browser > h2, p {
+          margin: 4px;
+          font-size: 90%;
+        }
+        
+        footer {
+          text-align: center;
+          padding: 3px;
+          background-color: DarkSalmon;
+          color: white;
+        }
+        </style>
+
 </head>
 
 <body>
-    <header>
+    <article class="all-browsers">
+    <header style= background:darkcyan; color:white; padding:10px 20px>
         <div class="topnav">
             <ul>
                 <li><a class="active" href="#home">Home</a></li>
@@ -20,8 +51,9 @@
         </div>
     </header>
     <main>
-        <section>
-            <fieldset>
+        <article class="browser">
+        <section flex: 200px;>
+            <fieldset >
                 <form id="formID">
 
                     <!-- <label for="id"> Your ID :</label><br>
@@ -56,8 +88,10 @@
 
                 </form>
             </fieldset>
-        </section>
-        <section id="cardSection">
+        </section >
+    </article>
+        <section  id="cardSection" flex: 200px;>
+            <!-- <div class = "cardDiv"  -->
         </section>
 
     </main>
@@ -71,6 +105,7 @@
         <p>© 2022 ToDo,Task .</p>
     </footer>
     <script src="./app.js"></script>
+</article>
 </body>
 
 </html>
