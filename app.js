@@ -91,12 +91,15 @@ let Omar_Zaid = new Employee(1004,"Omar Zaid","Development","Senior","./assets/E
 let Rana_Saleh = new Employee(1005,"Rana Saleh","Development","Junior","./assets/Emp Image.jpg");
 let Hadi_Ahmad = new Employee(1006,"Hadi Ahmad","Finance","Mid-Senio","./assets/Emp Image.jpg");
 
+
+function renderAll() {
 for (let i = 0; i < empArr.length; i++) {
     empArr[i].render();
 }
+
+}
+renderAll();
 console.log(empArr);
-
-
 formEl.addEventListener("submit", handleSubmit);
 
 function handleSubmit(event){
@@ -112,6 +115,10 @@ function handleSubmit(event){
 
   let newEmp = new Employee(id,fullName,department,level,image_URL,salary);
   newEmp.render();
+
+
+  saveData(empArr);
+
   console.log(newEmp);
 }
 
@@ -119,3 +126,23 @@ function handleSubmit(event){
 // selectList.addEventListener("change", function(){
 //     console.log(selectList.options[selectList.selectedIndex].value);
 // });
+
+
+function saveData(data){
+    let stringfiyData = JSON.stringify(data);
+    localStorage.setItem("employee",stringfiyData);
+}
+
+function gitData(){
+    let retrivedData = localStorage.getItem("employee");
+    let arrayData = JSON.parse(retrivedData);
+    if (arrayData != null) {
+
+      for (let i = 0; i < arrayData.length; i++) {
+        new Employee(arrayData[i].id,arrayData[i].fullName,arrayData[i].department,arrayData[i].level,arrayData[i].imageEl,arrayData[i].salary);
+        
+      }
+    }
+    renderAll();
+}
+gitData();
