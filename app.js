@@ -142,6 +142,7 @@ function gitData(){
         
       }
     }
+    console.log(empArr);
     renderAll();
 }
 gitData();
