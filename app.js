@@ -122,6 +122,17 @@ function handleSubmit(event){
 }
 
 
+Ghazi_Samer.render();
+Lana_Ali.render();
+Tamara_Ayoub.render();
+Safi_Walid.render();
+Omar_Zaid.render();
+Rana_Saleh.render();
+Hadi_Ahmad.render();
+console.log(empArr);
+console.log(Ghazi_Samer.salary);
+
+
 // selectList.addEventListener("change", function(){
 //     console.log(selectList.options[selectList.selectedIndex].value);
 // });
@@ -131,6 +142,7 @@ function saveData(data){
     let stringfiyData = JSON.stringify(data);
     localStorage.setItem("employee",stringfiyData);
 }
+
 
 function gitData(){
     let retrivedData = localStorage.getItem("employee");
