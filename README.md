@@ -1,5 +1,6 @@
 # HR-management-system
 
+
 **Home page**
 1) Add Header for navigating.
 2) Add Main render the information for each employee from javascript.
@@ -15,3 +16,4 @@
 1) Add Header for navigating.
 2) Add Main section.
 3) Add Footer to some social media links with copyright.
+
