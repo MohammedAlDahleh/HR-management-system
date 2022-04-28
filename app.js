@@ -39,10 +39,6 @@ Employee.prototype.render = function () {
 
 }
 
-Employee.prototype.render = function(){
-    console.log(this.level);
-    document.write(`<H2> hi : ${this.full_name}<H2>`);
-}
 Ghazi_Samer.render();
 Lana_Ali.render();
 Tamara_Ayoub.render();
