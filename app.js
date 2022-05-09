@@ -1,11 +1,7 @@
 `use strict`
-let sectionEl = document.getElementById("cardSection");
-//console.log(sectionEl);
-
-let formEl = document.getElementById("formID");
-//console.log(formEl);
-
 let empArr = [];
+let sectionEl = document.getElementById("cardSection");
+let formEl = document.getElementById("formID");
 
 function Employee(id, full_name, department, level, image_URL, salary) {
     this.id = this.generateID();
@@ -33,12 +29,11 @@ Employee.prototype.render = function () {
     // console.log(this.full_name);
     // document.write(`<h1> this is the name of Employee: ${this.full_name}
     //     the salary is: ${this.salary} </h1>`);
-
-    let imageEl = document.createElement('img');
-    imageEl.src= this.image_URL;
-    imageEl.alt ="profile pic";
-    sectionEl.appendChild(imageEl);
-    imageEl.style.width = "70px";
+ let imageEl = document.createElement('img');
+ imageEl.src= this.image_URL;
+ imageEl.alt ="profile pic";
+ sectionEl.appendChild(imageEl);
+ imageEl.style.width = "70px";
    
  let full_name = document.createElement('h3');
  full_name.textContent = this.full_name;
@@ -60,28 +55,6 @@ Employee.prototype.render = function () {
  salary.textContent = this.salary;
  sectionEl.appendChild(salary);
 }
-// Employee.prototype.render = function(){
-
-//     let full_name = document.createElement('h3');
-//     full_name.textContent = this.full_name;
-//     sectionEl.appendChild(full_name); 
- 
-//  let department = document.createElement('p');
-//  department.textContent = this.department;
-//  sectionEl.appendChild(department);
- 
-//  let level = document.createElement('p');
-//  department.textContent = this.level;
-//  sectionEl.appendChild(level);
- 
- 
-//  let imageEl = document.createElement('img');
-//  imageEl.src= this.image_URL;
-//  sectionEl.appendChild(imageEl);
-//  imageEl.style.width = "70px";
- 
-//  }
- 
 
 let Ghazi_Samer = new Employee(1000, "Ghazi Samer", "Administration", "Senior", "./assets/Ghazi.jpg");
 let Lana_Ali = new Employee(1001, "Lana Ali", "Finance", "Senior","./assets/Hadi.jpg");
@@ -99,13 +72,11 @@ for (let i = 0; i < empArr.length; i++) {
 
 }
 
-// console.log(empArr);
 formEl.addEventListener("submit", handleSubmit);
 
 function handleSubmit(event){
     event.preventDefault();
-
-   console.log("Form event",event);
+//    console.log("Form event",event);
   let image_URL = event.target.image.value;
   let id = Employee.prototype.generateID();
   let fullName = event.target.fullName.value;
@@ -116,27 +87,8 @@ function handleSubmit(event){
   let newEmp = new Employee(id,fullName,department,level,image_URL,salary);
   newEmp.render();
 
-
   saveData(empArr);
-
 }
-
-
-Ghazi_Samer.render();
-Lana_Ali.render();
-Tamara_Ayoub.render();
-Safi_Walid.render();
-Omar_Zaid.render();
-Rana_Saleh.render();
-Hadi_Ahmad.render();
-console.log(empArr);
-console.log(Ghazi_Samer.salary);
-
-
-// selectList.addEventListener("change", function(){
-//     console.log(selectList.options[selectList.selectedIndex].value);
-// });
-
 
 function saveData(data){
     let stringfiyData = JSON.stringify(data);
@@ -148,12 +100,11 @@ function gitData(){
     let retrivedData = localStorage.getItem("employee");
     let arrayData = JSON.parse(retrivedData);
     if (arrayData != null) {
-
       for (let i = 0; i < arrayData.length; i++) {
         new Employee(arrayData[i].id,arrayData[i].fullName,arrayData[i].department,arrayData[i].level,arrayData[i].imageEl,arrayData[i].salary);
-        
       }
     }
+    console.log(empArr);
     renderAll();
 }
 gitData();

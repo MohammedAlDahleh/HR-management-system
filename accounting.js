@@ -14,8 +14,7 @@ Employee.prototype.renderTable = function(){
 function renderEmp() {
     for (let i = 0; i < empArr.length; i++) {
         empArr[i].renderTable();
-    }
-    
+    } 
 }
 renderEmp();
     
