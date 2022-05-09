@@ -95,6 +95,7 @@ function saveData(data){
     localStorage.setItem("employee",stringfiyData);
 }
 
+
 function gitData(){
     let retrivedData = localStorage.getItem("employee");
     let arrayData = JSON.parse(retrivedData);
