@@ -30,9 +30,6 @@ Employee.prototype.generateID = function(){
  return (Math.floor(Math.random() * 10000) + 10000).toString().substring(1);
 }
 Employee.prototype.render = function () {
-    // console.log(this.full_name);
-    // document.write(`<h1> this is the name of Employee: ${this.full_name}
-    //     the salary is: ${this.salary} </h1>`);
 
     let imageEl = document.createElement('img');
     imageEl.src= this.image_URL;
